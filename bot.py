@@ -4,11 +4,15 @@ import glob
 from dotenv import load_dotenv
 import os
 import aiohttp
+from utilities import get_rarity
 
 load_dotenv()
 
-# update bot token
+# Get Bot token
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+# load percentages
+rarity = get_rarity()
 
 # Initialise the bot
 bot = commands.Bot(command_prefix="/", help_command=None)
@@ -77,9 +81,14 @@ async def fantomgochi(ctx, f_id):
                         for x in range(0, len(res["attributes"])):
                             embed.add_field(
                                 name=res["attributes"][x]["trait_type"],
-                                value=res["attributes"][x]["value"],
+                                value=f"{res['attributes'][x]['value'].strip().replace('_',' ')} ({rarity[res['attributes'][x]['trait_type'].strip().replace('_',' ')][res['attributes'][x]['value'].strip().replace('_',' ')]:.2f}%)",
                                 inline=True,
                             )
+                        embed.add_field(
+                            name="Atrributes Count",
+                            value=f"{len(res['attributes'])} ({rarity['Attributes count'][str(len(res['attributes']))]:.2f}%)",
+                            inline=True,
+                        )
                         await ctx.send(embed=embed)
             except:
                 await ctx.channel.send(f"Something went wrong, please try again later")
@@ -112,9 +121,14 @@ async def gochi(ctx, f_id):
                         for x in range(0, len(res["attributes"])):
                             embed.add_field(
                                 name=res["attributes"][x]["trait_type"],
-                                value=res["attributes"][x]["value"],
+                                value=f"{res['attributes'][x]['value'].strip().replace('_',' ')} ({rarity[res['attributes'][x]['trait_type'].strip().replace('_',' ')][res['attributes'][x]['value'].strip().replace('_',' ')]:.2f}%)",
                                 inline=True,
                             )
+                        embed.add_field(
+                            name="Atrributes Count",
+                            value=f"{len(res['attributes'])} ({rarity['Attributes count'][str(len(res['attributes']))]:.2f}%)",
+                            inline=True,
+                        )
                         await ctx.send(embed=embed)
             except:
                 await ctx.channel.send(f"Something went wrong, please try again later")
