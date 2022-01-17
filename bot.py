@@ -47,6 +47,11 @@ async def on_ready():
         inline=False,
     )
     embed.add_field(
+        name="/link #",
+        value="Replace # with your fantomgochi number to link to Paintswap & NFTKey",
+        inline=False,
+    )
+    embed.add_field(
         name="/help",
         value="Get the list of commands",
         inline=False,
@@ -143,6 +148,42 @@ async def gochi(ctx, f_id):
 
 
 @bot.command()
+async def link(ctx, f_id):
+    if f_id.isnumeric() == True:
+        if int(f_id) > 0 and int(f_id) <= 2019:
+            try:
+                embed = discord.Embed(
+                    title=f"Fantomgochi #{f_id}",
+                    description=f"View Fantomgochi #{f_id} at the following links",
+                    color=0xFF5733,
+                )
+                embed.add_field(
+                    name="Paintswap",
+                    value=f"https://paintswap.finance/marketplace/assets/0x1c9d0b3eb50bf51a9723e2dcca679242b2747f03/{f_id}",
+                    inline=False,
+                )
+                embed.add_field(
+                    name="NFTKey",
+                    value=f"https://nftkey.app/collections/fantomgochi/token-details/?tokenId={f_id}",
+                    inline=False,
+                )
+                embed.set_thumbnail(
+                    url=f"https://gateway.pinata.cloud/ipfs/QmcUBDXxDaLQnbyL6RJ9fyY5rFJ4eBBv1BQUayHDvGzb7y/{f_id}.png"
+                )
+                await ctx.send(embed=embed)
+            except:
+                await ctx.channel.send(f"Something went wrong, please try again later")
+        else:
+            await ctx.channel.send(
+                f"Incorrect command, Please use a number between 1 and 2019"
+            )
+    else:
+        await ctx.channel.send(
+            f"Incorrect command, Please use a number between 1 and 2019"
+        )
+
+
+@bot.command()
 async def help(ctx):
     embed = discord.Embed(
         title=f"Fantomgochi Bot Guide",
@@ -160,6 +201,11 @@ async def help(ctx):
     embed.add_field(
         name="/gochi #",
         value="Replace # with your fantomgochi number to see the traits and an image",
+        inline=False,
+    )
+    embed.add_field(
+        name="/link #",
+        value="Replace # with your fantomgochi number to link to Paintswap & NFTKey",
         inline=False,
     )
     embed.add_field(
