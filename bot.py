@@ -21,9 +21,9 @@ async def on_ready():
     print("Connected to bot: {}".format(bot.user.name))
     print("Bot ID: {}".format(bot.user.id))
     # Upon joining a guild send help on how to get the information
-    guild = bot.get_guild(910164456875642890)
+    guild = bot.get_guild(912209821078536193)
     # await rebase.send('React to this message to get your "Rebase Watcher" Role!')
-    await guild.me.edit(nick=f"fantomgochi Bot")
+    await guild.me.edit(nick=f"Fantomgochi Bot")
     embed = discord.Embed(
         title=f"Fantomgochi Bot Guide",
         description="Use the following commands to see your fantomgochi",
@@ -70,7 +70,7 @@ async def fantomgochi(ctx, f_id):
                     ) as r:
                         res = await r.json()
                         embed = discord.Embed(
-                            title=f"fantomgochi #{f_id}",
+                            title=f"Fantomgochi #{f_id}",
                             description=res["description"],
                             color=0xFF5733,
                         )
@@ -107,7 +107,7 @@ async def gochi(ctx, f_id):
                     ) as r:
                         res = await r.json()
                         embed = discord.Embed(
-                            title=f"fantomgochi #{f_id}",
+                            title=f"Fantomgochi #{f_id}",
                             description=res["description"],
                             color=0xFF5733,
                         )
@@ -135,7 +135,7 @@ async def gochi(ctx, f_id):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(
-        title=f"fantomgochi Bot Guide",
+        title=f"Fantomgochi Bot Guide",
         description="Use the following commands to see your fantomgochi",
         color=0xFF5733,
     )
