@@ -63,7 +63,6 @@ async def fantomgochi(ctx, f_id):
     if f_id.isnumeric() == True:
         if int(f_id) > 0 and int(f_id) <= 2019:
             try:
-
                 async with aiohttp.ClientSession() as cs:
                     async with cs.get(
                         f"https://gateway.pinata.cloud/ipfs/QmP9U47KUJFsP2CkfKEQ5PvfLX55HGpWjWp4NXYCgnmWZM/{f_id}.json"
@@ -81,7 +80,6 @@ async def fantomgochi(ctx, f_id):
                                 value=res["attributes"][x]["value"],
                                 inline=True,
                             )
-
                         await ctx.send(embed=embed)
             except:
                 await ctx.channel.send(f"Something went wrong, please try again later")
@@ -100,7 +98,6 @@ async def gochi(ctx, f_id):
     if f_id.isnumeric() == True:
         if int(f_id) > 0 and int(f_id) <= 2019:
             try:
-
                 async with aiohttp.ClientSession() as cs:
                     async with cs.get(
                         f"https://gateway.pinata.cloud/ipfs/QmP9U47KUJFsP2CkfKEQ5PvfLX55HGpWjWp4NXYCgnmWZM/{f_id}.json"
@@ -118,7 +115,6 @@ async def gochi(ctx, f_id):
                                 value=res["attributes"][x]["value"],
                                 inline=True,
                             )
-
                         await ctx.send(embed=embed)
             except:
                 await ctx.channel.send(f"Something went wrong, please try again later")
